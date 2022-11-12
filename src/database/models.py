@@ -9,7 +9,7 @@ Base = declarative_base()
 class Talent (Base):
     __tablename__ = 'talents'
     
-    id = Column(Integer(), primary_key=True, index=True)
+    id = Column(Integer(), primary_key=True)
     original_id = Column(String(255), unique=True, nullable=False)
     talent_id = Column(String(255))
     talent_name = Column(String(255))

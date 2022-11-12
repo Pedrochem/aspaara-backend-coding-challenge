@@ -1,5 +1,8 @@
 # Requiriments
 - Install fastapi (pip install fastapi)
+- Install SQLite3
+- Install SQLAlchemy (pip install sqlalchemy)
+
 
 
 # Backend Coding Challenge
