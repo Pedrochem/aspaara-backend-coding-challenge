@@ -1,3 +1,7 @@
+# Requiriments
+- Install fastapi (pip install fastapi)
+
+
 # Backend Coding Challenge
 
 At aspaara a squad of superheroes works on giving superpowers to planning teams.
