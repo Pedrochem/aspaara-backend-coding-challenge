@@ -4,8 +4,38 @@ from sqlalchemy import Column, Integer, String, DateTime, Float, Boolean, JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import mapper
 from sqlalchemy.sql import func
+from pydantic import BaseModel
 
 Base = declarative_base()
+
+class Talent_Response(BaseModel):
+    id : int
+    original_id : str
+    talent_id : str
+    talent_name : str
+    talent_grade : str
+    booking_grade : str
+    operating_unit : str
+    office_city : str
+    office_postal_code : str
+    job_manager_name : str
+    job_manager_id : str
+    total_hours : float
+    start_date : datetime
+    end_date : datetime
+    client_name : str
+    client_id : str
+    industry : str
+    required_skills : object
+    optional_skills : object
+    is_unassigned : bool
+    # items : int
+    # total : int
+    # page : int
+    # size: int
+
+    class Config:
+        orm_mode = True
 
 
 class Talent (Base):

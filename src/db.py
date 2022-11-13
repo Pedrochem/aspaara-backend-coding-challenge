@@ -6,7 +6,8 @@ from sqlalchemy.orm import sessionmaker
 from models import Base,Talent
 from sqlalchemy import create_engine
 
-DATA_FILE_PATH = os.path.join( os.getcwd(), '..','planning.json' )
+#fix
+DATA_FILE_PATH = os.path.join( os.getcwd(),'..','planning.json' )
 
 
 def create_db(load_data):
