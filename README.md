@@ -4,6 +4,7 @@
 - Install SQLAlchemy (pip install sqlalchemy)
 - Install IJson
 - Verify file path
+- Install fastapi-pagination (pip install fastapi-pagination)
 
 
 # Backend Coding Challenge
