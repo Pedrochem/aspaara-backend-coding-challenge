@@ -1,8 +1,9 @@
-# Requeriments
+# Requiriments
 - Install fastapi (pip install fastapi)
 - Install SQLite3
 - Install SQLAlchemy (pip install sqlalchemy)
-
+- Install IJson
+- Verify file path
 
 
 # Backend Coding Challenge
