@@ -2,6 +2,7 @@
 This project is a simple implementation of a talents api in python using the fastapi and sqlalchemy framework stack. This works is part of a backend coding challange for a junior backend position at the aspaara company.
 
 # Dependencies
+- Python 3.8
 - fastapi 
 - uvicorn
 - SQLite3
@@ -11,7 +12,7 @@ This project is a simple implementation of a talents api in python using the fas
 - fastapi-pagination 
 
 # Execution Instructions 
-- Install `requriments.txt`
+- Install the dependencies with `pip install -r requirements.txt`
 - Navigate to **/src** directory.
 - Execute `run.py` file with arguments --create_db (-c) and --load_data (-l)
 - `--create_db = 1` recreates the database by droping and creating the talents table.
