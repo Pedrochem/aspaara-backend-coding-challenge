@@ -1,7 +1,7 @@
 # Project 
 This project is a simple implementation of a talents api in python using the fastapi and sqlalchemy framework stack. This works is part of a backend coding challange for a junior backend position at the aspaara company.
 
-# Dependecies
+# Dependencies
 - fastapi 
 - uvicorn
 - SQLite3
