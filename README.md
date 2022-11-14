@@ -1,10 +1,26 @@
-# Requiriments
-- Install fastapi (pip install fastapi)
-- Install SQLite3
-- Install SQLAlchemy (pip install sqlalchemy)
-- Install IJson
-- Verify file path
-- Install fastapi-pagination (pip install fastapi-pagination)
+# Project 
+This project is a simple implementation of a talents api in python using the fastapi and sqlalchemy framework stack. This works is part of a backend coding challange for a junior backend position at the aspaara company.
+
+# Dependecies
+- fastapi 
+- uvicorn
+- SQLite3
+- SQLAlchemy 
+- pydantic 
+- IJson 
+- fastapi-pagination 
+
+# Execution Instructions 
+- Install `requriments.txt`
+- Navigate to **/src** directory.
+- Execute `run.py` file with arguments --create_db (-c) and --load_data (-l)
+- `--create_db = 1` recreates the database by droping and creating the talents table.
+- `--load_data = 1` populates the database with the `planning.json` file. 
+
+## Example Usage:
+- `python3 run.py --create_db=1 --load_data=1`
+- `python3 run.py --create_db=1 --load_data=0`
+- `python3 run.py --create_db=0 --load_data=0`
 
 
 # Backend Coding Challenge

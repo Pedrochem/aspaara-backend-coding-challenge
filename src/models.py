@@ -8,6 +8,7 @@ from pydantic import BaseModel
 
 Base = declarative_base()
 
+# response model for api calls
 class Talent_Response(BaseModel):
     id : int
     original_id : str
@@ -29,15 +30,12 @@ class Talent_Response(BaseModel):
     required_skills : object
     optional_skills : object
     is_unassigned : bool
-    # items : int
-    # total : int
-    # page : int
-    # size: int
 
     class Config:
         orm_mode = True
 
 
+# talent base class 
 class Talent (Base):
     __tablename__ = 'talents'
     

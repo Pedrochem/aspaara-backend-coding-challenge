@@ -10,17 +10,33 @@ engine = create_engine('sqlite:///planning.bd',echo=True)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-app = FastAPI()
          
+tags_metadata = [
+    {
+        "name": "pagination",
+        "description": "Get all talents with pagination",
+    },
+    {
+        "name": "sorted",
+        "description": "Get all talents with pagination and sorting. Define 'asc' or 'desc' for either the startDate or endDate pathparamenters",
+    },
+    {
+        "name": "filtered",
+        "description": "Get all talents with pagination and filtering."
+    }
+]
+app = FastAPI(openapi_tags=tags_metadata)
 
-@app.get("/talents/", response_model=Page[Talent_Response])
+
+# retrieve all talents with pagination
+@app.get("/talents/", response_model=Page[Talent_Response], tags=["pagination"])
 def pagination(params: Params = Depends()):
     results = session.query(Talent).all()
     return paginate(results,params)
      
 
-
-@app.get("/talents/sorted",response_model=Page[Talent_Response])
+# retrieve talents sorted by startDate or endDate
+@app.get("/talents/sorted", response_model=Page[Talent_Response], tags=["sorted"])
 def sorting(params: Params = Depends(), startDate: Union[str, None] = None, endDate: Union[str, None] = None):
     if (startDate and endDate )or (not startDate and not endDate):
         raise HTTPException(status_code=400, detail="Provide either startDate or endDate")
@@ -38,15 +54,28 @@ def sorting(params: Params = Depends(), startDate: Union[str, None] = None, endD
     
     return paginate(results,params)
 
-@app.get("/talents/filtered",response_model=Page[Talent_Response])
+# retrieve talents with filtering
+@app.get("/talents/filtered",response_model=Page[Talent_Response], tags=["filtered"])
 def filtering(params: Params = Depends(),
+                original_id: Union[str,None] = None,
+                talent_id : Union[str,None] = None,
+                talent_name : Union[str,None] = None,
                 talent_grade: Union[str,None] = None, 
-                office_city: Union[str,None] = None, 
+                booking_grade : Union[str,None] = None, 
+                operating_unit : Union[str,None] = None, 
+                office_city : Union[str,None] = None, 
+                office_postal_code : Union[str,None] = None, 
+                job_manager_name : Union[str,None] = None, 
+                job_manager_id : Union[str,None] = None, 
+                total_hours : Union[str,float] = None,
                 client_name: Union[str,None] = None,
-                is_unassigned: Union[bool,None] = None, 
-                industry: Union[str,None] = None):
+                client_id : Union[str,None] = None,
+                industry : Union[str,None] = None,
+                is_unassigned: Union[bool,None] = None):
+
     parameters = locals().copy()
     query = session.query(Talent)
+    # iterate over parameters not null add them to the query
     for attr in [x for x in parameters if parameters[x] is not None]:
         if attr == 'params': continue
         query = query.filter(getattr(Talent, attr) == (parameters[attr]))
